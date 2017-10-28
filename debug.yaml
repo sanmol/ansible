@@ -1,0 +1,14 @@
+--- #Debug script
+- hosts: server2
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes
+  tasks:
+  - name: New pacage install
+    yum:
+     name: telnet
+     state: latest
+    register: result
+  - debug: var=result
